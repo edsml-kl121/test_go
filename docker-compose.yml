@@ -1,0 +1,40 @@
+version: '2'
+networks:
+  app-tier:
+    driver: bridge
+
+services:
+  mongodb:
+    build: ./backend
+    volumes:
+      - ./backend/mongodb:/var/lib/mongodb
+    ports:
+      - "27017:27017"
+    environment:
+      mongodb+srv://u1800085:Mewwarwick01@cluster0.1pjkfmk.mongodb.net/?retryWrites=true&w=majority
+    networks:
+      - app-tier
+
+  api:
+    build:
+      context: ./api
+      args:
+        app_env: ${APP_ENV}
+    volumes:
+      - ./api:/go/src/github.com/hugominas/gomore/api
+    ports:
+      - "5000:8080"
+    links:
+      - mongodb
+    networks:
+      - app-tier
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        app_env: ${APP_ENV}
+    volumes:
+      - ./frontend/src:/frontend/src
+    ports:
+      - "3000:3000"
