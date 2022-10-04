@@ -14,6 +14,28 @@ const Orders = () => {
   const [addNewOrder, setAddNewOrder] = useState(false)
   const [newOrder, setNewOrder] = useState({"dish": "", "server": "", "table": 0, "price": 0})
 
+  //gets all the orders
+  // function getAllOrders(){
+  //   var url = "http://localhost:5000/orders"
+  //   axios.get(url, {
+  //       responseType: 'json'
+  //   }).then(response => {
+  //       if(response.status == 200){
+  //           setOrders(response.data)
+  //       }
+  //   })
+  // }
+  const getAllOrders = () => {
+    var url = "http://localhost:5000/orders"
+    axios.get(url, {
+      responseType: 'json'
+    }).then(response => {
+      if(response.status == 200){
+        setOrders(response.data)
+      }
+    })
+  }
+
   //gets run at initial loadup
   useEffect(() => {
     getAllOrders();
@@ -61,27 +83,6 @@ const Orders = () => {
         if(response.status == 200){
             setRefreshData(true)
         }
-    })
-  }
-  //gets all the orders
-  // function getAllOrders(){
-  //   var url = "http://localhost:5000/orders"
-  //   axios.get(url, {
-  //       responseType: 'json'
-  //   }).then(response => {
-  //       if(response.status == 200){
-  //           setOrders(response.data)
-  //       }
-  //   })
-  // }
-  const getAllOrders = () => {
-    var url = "http://localhost:5000/orders"
-    axios.get(url, {
-      responseType: 'json'
-    }).then(response => {
-      if(response.status == 200){
-        setOrders(response.data)
-      }
     })
   }
   
