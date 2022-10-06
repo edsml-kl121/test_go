@@ -1,13 +1,12 @@
-package routes
+package controllers
 
 import (
 	"context"
 	"fmt"
 	"net/http"
 	"time"
-
 	"server/models"
-
+	"server/database"
 	"github.com/gin-gonic/gin"
 	"github.com/go-playground/validator/v10"
 	"go.mongodb.org/mongo-driver/bson"
@@ -16,7 +15,7 @@ import (
 )
 
 var validate = validator.New()
-var orderCollection *mongo.Collection = OpenCollection(Client, "orders")
+var orderCollection *mongo.Collection = database.OpenCollection(database.Client, "orders")
 
 // add an order
 func AddOrder(c *gin.Context) {
