@@ -3,8 +3,8 @@ package main
 import (
 	"os"
 
-	routes "backend/routes"
-	"github.com/gin-contrib/cors"
+	routes "server/routes"
+	// "github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
 
@@ -31,7 +31,7 @@ func main() {
 
 	// router.Use(cors.Default())
 
-	router.OrderRoutes(router)
+	routes.OrderRoutes(router)
 	// // these are the endpoints
 	// //C
 	// router.POST("/order/create", routes.AddOrder)

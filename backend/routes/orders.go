@@ -215,8 +215,8 @@
 package routes
 
 import(
-	controller "backend/controllers"
-	"backend/middleware"
+	controllers "server/controllers"
+	// "server/middleware"
 	"github.com/gin-gonic/gin"
 )
 
@@ -224,14 +224,14 @@ import(
 func OrderRoutes(incomingRoutes *gin.Engine) {
 	// these are the endpoints
 	//C
-	incomingRoutes.POST("/order/create", routes.AddOrder)
+	incomingRoutes.POST("/order/create", controllers.AddOrder)
 	//R
-	incomingRoutes.GET("/waiter/:waiter", routes.GetOrdersByWaiter)
-	incomingRoutes.GET("/orders", routes.GetOrders)
-	incomingRoutes.GET("/order/:id/", routes.GetOrderById)
+	incomingRoutes.GET("/waiter/:waiter", controllers.GetOrdersByWaiter)
+	incomingRoutes.GET("/orders", controllers.GetOrders)
+	incomingRoutes.GET("/order/:id/", controllers.GetOrderById)
 	//U
-	incomingRoutes.PUT("/waiter/update/:id", routes.UpdateWaiter)
-	incomingRoutes.PUT("/order/update/:id", routes.UpdateOrder)
+	incomingRoutes.PUT("/waiter/update/:id", controllers.UpdateWaiter)
+	incomingRoutes.PUT("/order/update/:id", controllers.UpdateOrder)
 	//D
-	incomingRoutes.DELETE("/order/delete/:id", routes.DeleteOrder)
+	incomingRoutes.DELETE("/order/delete/:id", controllers.DeleteOrder)
 }
