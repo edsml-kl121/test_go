@@ -13,7 +13,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate, Link} from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import axios from "axios";
 
 function Copyright(props) {
@@ -34,7 +34,7 @@ const theme = createTheme();
 export default function SignIn(props) {
   const history = useNavigate();
 	const [user, setUser] = useState({Email: "", Password: ""});
-	const [users, setUsers] = useState([]);
+	// const [users, setUsers] = useState([]);
 
 
 

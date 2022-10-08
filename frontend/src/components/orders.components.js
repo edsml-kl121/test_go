@@ -14,17 +14,6 @@ const Orders = (props) => {
   const [addNewOrder, setAddNewOrder] = useState(false)
   const [newOrder, setNewOrder] = useState({"dish": "", "server": "", "table": 0, "price": 0})
 
-  //gets all the orders
-  // function getAllOrders(){
-  //   var url = "http://localhost:5000/orders"
-  //   axios.get(url, {
-  //       responseType: 'json'
-  //   }).then(response => {
-  //       if(response.status == 200){
-  //           setOrders(response.data)
-  //       }
-  //   })
-  // }
 //   const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJFbWFpbCI6Ik1ldy5zaEBnbWFpbC5jb20iLCJGaXJzdF9uYW1lIjoiTWV3IiwiTGFzdF9uYW1lIjoiU2hhcm1hIiwiVWlkIjoiNjMzZjFlMWE4ZmRlZTVhNWMzOTFjYTQ1IiwiVXNlcl90eXBlIjoiQURNSU4iLCJleHAiOjE2NjUxNjc4MTd9.EWsSDs0y1vuS3TDyOv-IawOO2gQ567BMWUHQ7fh5ERI"
   const getAllOrders = () => {
     var url = "http://localhost:5000/orders"
@@ -32,7 +21,7 @@ const Orders = (props) => {
       responseType: 'json'
     //   headers: {"Authorization" : `${token}`}
     }).then(response => {
-      if(response.status == 200){
+      if(response.status === 200){
         setOrders(response.data)
       }
     })
@@ -60,7 +49,7 @@ const Orders = (props) => {
         "server": newWaiterName
     }).then(response => {
         console.log(response.status)
-        if(response.status == 200){
+        if(response.status === 200){
             setRefreshData(true)
         }
     })
@@ -74,7 +63,7 @@ const Orders = (props) => {
     var url = "http://localhost:5000/order/update/" + changeOrder.id
     axios.put(url, newOrder)
         .then(response => {
-        if(response.status == 200){
+        if(response.status === 200){
             setRefreshData(true)
         }
     })
@@ -92,7 +81,7 @@ const Orders = (props) => {
         "table": newOrder.table,
         "price": parseFloat(newOrder.price)
     }).then(response => {
-        if(response.status == 200){
+        if(response.status === 200){
             setRefreshData(true)
         }
     })
@@ -106,7 +95,7 @@ const Orders = (props) => {
     var url = "http://localhost:5000/order/delete/" + id
     axios.delete(url, {
     }).then(response => {
-        if(response.status == 200){
+        if(response.status === 200){
             setRefreshData(true)
         }
     })
