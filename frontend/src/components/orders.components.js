@@ -36,6 +36,9 @@ const Orders = (props) => {
         setOrders(response.data)
       }
     })
+    .catch(error => {
+        // console.log(error);
+      })
   }
 
   //gets run at initial loadup
@@ -61,6 +64,9 @@ const Orders = (props) => {
             setRefreshData(true)
         }
     })
+    .catch(error => {
+        // console.log(error);
+      })
   }
   //changes the order
   function changeSingleOrder(){
@@ -72,6 +78,9 @@ const Orders = (props) => {
             setRefreshData(true)
         }
     })
+    .catch(error => {
+        // console.log(error);
+      })
   }
   //creates a new order
   function addSingleOrder(){
@@ -87,6 +96,9 @@ const Orders = (props) => {
             setRefreshData(true)
         }
     })
+    .catch(error => {
+        // console.log(error);
+      })
   }
   
   //deletes a single order
@@ -98,6 +110,9 @@ const Orders = (props) => {
             setRefreshData(true)
         }
     })
+    .catch(error => {
+        // console.log(error);
+      })
   }
 
     return (
