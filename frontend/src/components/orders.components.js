@@ -103,8 +103,11 @@ const Orders = (props) => {
     return (
     <div>
     {/* add new order button */}
+    <div data-testid="orders-1">
+        The Order Adder App
+    </div>
     <Container>
-         <Button onClick={() => setAddNewOrder(true)}>Add new order</Button>
+         <Button data-testid="add-new-order" onClick={() => setAddNewOrder(true)}>Add new order</Button>
     </Container>
     {/* list all current orders */}
     <Container>
