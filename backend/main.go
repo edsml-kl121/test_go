@@ -4,8 +4,9 @@ import (
 	"os"
 
 	routes "server/routes"
-	// "github.com/gin-contrib/cors"
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
+	// "time"
 )
 
 func main() {
@@ -17,7 +18,21 @@ func main() {
 	}
 
 	router := gin.New()
+	// router.Use(cors.New(cors.Config{
+	// 	AllowOrigins:     []string{"https://foo.com"},
+	// 	AllowMethods:     []string{"PUT", "PATCH"},
+	// 	AllowHeaders:     []string{"Origin"},
+	// 	ExposeHeaders:    []string{"Content-Length"},
+	// 	AllowCredentials: true,
+	// 	AllowOriginFunc: func(origin string) bool {
+	// 		return origin == "https://github.com"
+	// 	},
+	// 	MaxAge: 12 * time.Hour,
+	// }))
+	// router.Use(gin.Logger())
 	router.Use(gin.Logger())
+
+	router.Use(cors.Default())
 
 	routes.AuthRoutes(router)
 	routes.UserRoutes(router)

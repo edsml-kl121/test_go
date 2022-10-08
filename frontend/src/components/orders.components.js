@@ -5,7 +5,7 @@ import Order from './single-order.component';
 
 
 
-const Orders = () => {
+const Orders = (props) => {
   const [orders, setOrders] = useState([])
   const [refreshData, setRefreshData] = useState(false)
   const [changeOrder, setChangeOrder] = useState({"change": false, "id": 0})
@@ -25,10 +25,12 @@ const Orders = () => {
   //       }
   //   })
   // }
+//   const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJFbWFpbCI6Ik1ldy5zaEBnbWFpbC5jb20iLCJGaXJzdF9uYW1lIjoiTWV3IiwiTGFzdF9uYW1lIjoiU2hhcm1hIiwiVWlkIjoiNjMzZjFlMWE4ZmRlZTVhNWMzOTFjYTQ1IiwiVXNlcl90eXBlIjoiQURNSU4iLCJleHAiOjE2NjUxNjc4MTd9.EWsSDs0y1vuS3TDyOv-IawOO2gQ567BMWUHQ7fh5ERI"
   const getAllOrders = () => {
     var url = "http://localhost:5000/orders"
     axios.get(url, {
       responseType: 'json'
+    //   headers: {"Authorization" : `${token}`}
     }).then(response => {
       if(response.status == 200){
         setOrders(response.data)
@@ -38,6 +40,7 @@ const Orders = () => {
 
   //gets run at initial loadup
   useEffect(() => {
+    console.log(props)
     getAllOrders();
   }, [])
   //refreshes the page
