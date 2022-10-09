@@ -128,11 +128,11 @@ export default function SignIn(props) {
                   Forgot password?
                 </Link>
               </Grid>
-              <Grid item>
-                <Link href="/signup" variant="body2">
+                <Link to ="/signup" variant="body2">
+                  <Grid item>
                   {"Don't have an account? Sign Up"}
+                  </Grid>
                 </Link>
-              </Grid>
             </Grid>
           </Box>
         </Box>
